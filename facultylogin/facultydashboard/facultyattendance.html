@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <link rel="icon" type="image/x-icon" href="../../images/ljlogo1.png">
+  <title>Student Attendance Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: rgb(198, 224, 237);
+    }
+
+    .container {
+      max-width: 1000px;
+      height: 1650px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      background-color: aliceblue;
+    }
+
+    h1 {
+      text-align: center;
+      color: rgb(99, 48, 218);
+    }
+
+    table {
+      width: 100%;
+      height: 600px;
+      border-collapse: collapse;
+      margin-top: 20px;
+      border-radius: 20px;
+
+    }
+
+    th,
+    td {
+      border: 1px solid #171111;
+      padding: 12px;
+      font-size: 20px;
+      text-align: left;
+      background-color: rgb(152, 207, 223);
+    }
+
+    th {
+      background-color: cornflowerblue;
+    }
+
+    .button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 20px;
+      margin: 8px 2px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+
+    input[type="radio"][value="Absent"] {
+      transform: scale(1.9);
+      accent-color: red;
+
+    }
+
+    input[type="radio"][value="Present"] {
+      transform: scale(1.9);
+      accent-color: green;
+
+    }
+
+    .clearButton {
+      background-color: #008CBA;
+
+    }
+
+    /* Additional styles for the absent students table */
+    .attendanceResult {
+      margin: 4px auto;
+      height: auto;
+      width: auto;
+      /* Center horizontally */
+      /* Adjust as needed */
+      margin-top: 20px;
+      /* Add some top margin */
+      border-collapse: collapse;
+      /* Collapse table borders */
+    }
+
+    .attendanceResult th,
+    .attendanceResult td {
+      border: 1px solid #151414;
+      /* Add borders to table cells */
+      padding: 1px;
+      /* Add padding to table cells */
+      text-align: center;
+      /* Align text to the left */
+    }
+
+    .attendanceResult th {
+      background-color: cornflowerblue;
+    }
+
+    .attendanceResult th {
+      background-color: rgb(126, 192, 219);
+      /* Set background color for table header */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Student Attendance Dashboard</h1>
+    <table id="attendanceTable">
+      <thead>
+        <tr>
+          <th>Student Name</th>
+          <th>Roll Number</th>
+          <th>Batch</th>
+          <th>Branch</th>
+          <th>Attendance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Student 1</td>
+          <td id="rollNumber_1">100</td>
+          <td id="batch_1">C4</td>
+          <td id="branch_1">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_1" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_1" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>Student 2</td>
+          <td id="rollNumber_2">102</td>
+          <td id="batch_2">C4</td>
+          <td id="branch_2">EEE</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_2" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_2" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>Student 3</td>
+          <td id="rollNumber_3">102</td>
+          <td id="batch_3">C4</td>
+          <td id="branch_3">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_3" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_3" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>Student 4</td>
+          <td id="rollNumber_4">103</td>
+          <td id="batch_4">C4</td>
+          <td id="branch_4">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_4" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_4" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>Student 5</td>
+          <td id="rollNumber_5">104</td>
+          <td id="batch_5">C4</td>
+          <td id="branch_5">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_5" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_5" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>Student 6</td>
+          <td id="rollNumber_6">105</td>
+          <td id="batch_6">C4</td>
+          <td id="branch_6">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_6" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_6" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>Student 7</td>
+          <td id="rollNumber_7">106</td>
+          <td id="batch_7">C4</td>
+          <td id="branch_7">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_7" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_7" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>Student 8</td>
+          <td id="rollNumber_8">107</td>
+          <td id="batch_8">C4</td>
+          <td id="branch_8">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_8" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_8" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>Student 9</td>
+          <td id="rollNumber_9">108</td>
+          <td id="batch_9">C4</td>
+          <td id="branch_9">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_9" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_9" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>Student 10</td>
+          <td id="rollNumber_10">109</td>
+          <td id="batch_10">C4</td>
+          <td id="branch_10">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_10" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_10" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>Student 11</td>
+          <td id="rollNumber_11">110</td>
+          <td id="batch_11">C4</td>
+          <td id="branch_11">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_11" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_11" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Student 12</td>
+          <td id="rollNumber_12">111</td>
+          <td id="batch_12">C4</td>
+          <td id="branch_12">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_12" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_12" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Student 13</td>
+          <td id="rollNumber_13">112</td>
+          <td id="batch_13">C4</td>
+          <td id="branch_13">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_13" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_13" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Student 14</td>
+          <td id="rollNumber_14">113</td>
+          <td id="batch_14">C4</td>
+          <td id="branch_14">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_14" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_14" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Student 15</td>
+          <td id="rollNumber_15">114</td>
+          <td id="batch_15">C4</td>
+          <td id="branch_15">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_15" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_15" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>Student 16</td>
+          <td id="rollNumber_16">115</td>
+          <td id="batch_16">C4</td>
+          <td id="branch_16">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_16" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_16" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Student 17</td>
+          <td id="rollNumber_17">116</td>
+          <td id="batch_17">C4</td>
+          <td id="branch_17">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_17" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_17" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Student 18</td>
+          <td id="rollNumber_18">117</td>
+          <td id="batch_18">C4</td>
+          <td id="branch_18">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_18" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_18" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Student 19</td>
+          <td id="rollNumber_19">118</td>
+          <td id="batch_19">C4</td>
+          <td id="branch_19">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_19" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_19" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Student 20</td>
+          <td id="rollNumber_20">119</td>
+          <td id="batch_20">C4</td>
+          <td id="branch_20">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_20" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_20" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Student 21</td>
+          <td id="rollNumber_21">120</td>
+          <td id="batch_21">C4</td>
+          <td id="branch_21">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_21" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_21" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Student 22</td>
+          <td id="rollNumber_22">121</td>
+          <td id="batch_22">C4</td>
+          <td id="branch_22">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_22" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_22" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Student 23</td>
+          <td id="rollNumber_23">122</td>
+          <td id="batch_23">C4</td>
+          <td id="branch_23">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_23" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_23" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Student 24</td>
+          <td id="rollNumber_24">123</td>
+          <td id="batch_24">C4</td>
+          <td id="branch_24">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_24" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_24" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Student 25</td>
+          <td id="rollNumber_25">124</td>
+          <td id="batch_25">C4</td>
+          <td id="branch_25">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_25" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_25" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Student 26</td>
+          <td id="rollNumber_26">125</td>
+          <td id="batch_26">C4</td>
+          <td id="branch_26">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_26" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_26" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Student 27</td>
+          <td id="rollNumber_27">126</td>
+          <td id="batch_27">C4</td>
+          <td id="branch_27">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_27" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_27" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>Student 28</td>
+          <td id="rollNumber_28">127</td>
+          <td id="batch_28">C4</td>
+          <td id="branch_28">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_28" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_28" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Student 29</td>
+          <td id="rollNumber_29">128</td>
+          <td id="batch_29">C4</td>
+          <td id="branch_29">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_29" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_29" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Student 30</td>
+          <td id="rollNumber_30">129</td>
+          <td id="batch_30">C4</td>
+          <td id="branch_30">CST</td>
+          <td>
+            <label>
+              <input type="radio" name="attendance_30" value="Present"> Present
+            </label>
+            <label>
+              <input type="radio" name="attendance_30" value="Absent"> Absent
+            </label>
+          </td>
+        </tr>
+
+
+      </tbody>
+    </table>
+    <button class="button" onclick="showAttendance()">Submit Attendance</button>
+    <button class="button downloadButton" style="display:none;" onclick="downloadAbsentStudents()">Download
+      Exel</button>
+    <button class="button convertToImage" style="display:none;" onclick="tableToImage()">Download Image</button>
+    <button class="button clearButton" onclick="clearForm()">Clear</button>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.0/xlsx.full.min.js"></script>
+  <script>
+    function clearForm() {
+      const radioButtons = document.querySelectorAll('input[type="radio"]');
+      radioButtons.forEach(button => {
+        button.checked = false;
+      });
+    }
+    function getTodayDate() {
+      const currentDate = new Date();
+      const day = String(currentDate.getDate()).padStart(2, '0');
+      const month = String(currentDate.getMonth() + 1).padStart(2, '0');
+      const year = currentDate.getFullYear();
+      return `${day}-${month}-${year}`;
+    }
+    function showAttendance() {
+      // Remove existing tables
+      const existingTables = document.querySelectorAll('table.attendanceResult');
+      existingTables.forEach(table => {
+        table.remove();
+      });
+      const absentStudents = [];
+      const dateString = getTodayDate()
+      // Loop through each table row
+      const tableRows = document.querySelectorAll('#attendanceTable tbody tr');
+      tableRows.forEach(row => {
+        const studentName = row.querySelector('td:first-child').textContent;
+        const rollNumber = row.querySelector('td:nth-child(2)').textContent;
+        const batch = row.querySelector('td:nth-child(3)').textContent;
+        const branch = row.querySelector('td:nth-child(4)').textContent;
+        const attendance = row.querySelector('input[type="radio"]:checked');
+        if (attendance && attendance.value === "Absent") {
+          absentStudents.push({ studentName, rollNumber, batch, branch });
+        }
+      });
+      if (absentStudents.length > 0) {
+        const table = document.createElement('table');
+        table.className = 'attendanceResult';
+        const caption = document.createElement('caption');
+        caption.textContent = 'Absent Students ' + dateString;
+        caption.style.fontSize = '20px'
+        caption.style.fontWeight = 'bold'
+        table.appendChild(caption);
+        const thead = document.createElement('thead');
+        const tbody = document.createElement('tbody');
+        const trHead = document.createElement('tr');
+        ['Student Name', 'Roll Number', 'Batch', 'Branch'].forEach(headerText => {
+          const th = document.createElement('th');
+          th.textContent = headerText;
+          trHead.appendChild(th);
+        });
+        thead.appendChild(trHead);
+        table.appendChild(thead);
+        absentStudents.forEach(student => {
+          const tr = document.createElement('tr');
+          ['studentName', 'rollNumber', 'batch', 'branch'].forEach(key => {
+            const td = document.createElement('td');
+            td.textContent = student[key];
+            tr.appendChild(td);
+          });
+          tbody.appendChild(tr);
+        });
+        table.appendChild(tbody);
+        document.body.appendChild(table);
+        // Display additional buttons
+        document.querySelector('.downloadButton').style.display = 'inline-block';
+        document.querySelector('.convertToImage').style.display = 'inline-block';
+      } else {
+        alert("All students are present!");
+      }
+    }
+    function downloadAbsentStudents() {
+      const table = document.querySelector('table.attendanceResult');
+      const ws = XLSX.utils.table_to_sheet(table);
+      const dateString = getTodayDate()
+      // Create a new workbook and add the worksheet
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, 'Daily Absent No_');
+      // Generate the file name
+      const fileName = `Daily Absent No_${dateString}.xlsx`;
+      // Save the workbook as an Excel file
+      XLSX.writeFile(wb, fileName);
+    }
+    function tableToImage() {
+      const table = document.querySelector('table.attendanceResult');
+      html2canvas(table).then(function (canvas) {
+        // Convert canvas to image
+        const imgData = canvas.toDataURL('image/png');
+        // Create a new anchor element
+        const link = document.createElement('a');
+        link.href = imgData;
+        // Get today's date
+        const dateString = getTodayDate();
+        // Set the file name for download with today's date
+        link.download = `Daily Absent No_${dateString}.png`;
+        // Append the anchor element to the document body
+        document.body.appendChild(link);
+        // Trigger a click event on the anchor element to initiate download
+        link.click();
+        // Remove the anchor element from the document body
+        document.body.removeChild(link);
+      });
+    }
+  </script>
+</body>
+
+</html>
