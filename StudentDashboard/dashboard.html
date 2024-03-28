@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- For Icon logo -->
+    <link rel="icon" type="image/x-icon" href="../images/ljlogo1.png">
+
+    <!-- For Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+    <!-- Include Bootstrap CSS -->
+
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="dashboard.css" />
+    <link rel="stylesheet" href="animation.css" />
+    <link rel="stylesheet" href="nav-styles.css" />
+    <title>Student DashBoard</title>
+</head>
+
+<body>
+    <div>
+        <div class="navbar">
+            <div class="nav-item">
+                <a href="#student-details" class="nav-link fa-solid fa-user-graduate"></a>
+                <a href="#academic-performance" class="nav-link fa-solid fa-graduation-cap"></a>
+                <a href="#performance" class="nav-link fa-solid fa-chart-simple"></a>
+                <a href="#sem-details" class="nav-link fa-solid fa-circle-info"></a>
+                <a href="#notice-board" class="nav-link fa-solid fa-solid fa-clipboard"></a>
+                <hr class="hr">
+                <a href="../index.html" class="fa-solid fa-right-from-bracket "></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="marquee">
+        <div class="marquee-content">
+            🚨 Deadline To Submit Coursera Certificate Ends in 3days 🚨
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div>
+            <!-- <img class="ssn-logo" src="../images/ssn-logo.png" alt="ssn logo" /> -->
+            <br>
+            <h1>Welcome Back, Jash Adalja! 👋</h1>
+        </div>
+
+        <br>
+
+        <div id="student-details">
+            <i class="fa-solid fa-user-graduate"> </i>
+            <span> Student Details</span>
+            <hr>
+        </div>
+
+        <br>
+
+        <div class="details-container">
+            <i class="fa-solid fa-circle-user"></i>
+            <span>Personal Information</span>
+            <hr>
+            <div class="student-details">
+                <div class="details large">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Full Name</span>
+                    <hr>
+                    <p>Adalja Jash Naineshkumar</p>
+                </div>
+
+                <div class="details large">
+                    <i class="fa-solid fa-address-card"></i>
+                    <span>Enrollment Number</span>
+                    <hr>
+                    <p>22002171310002</p>
+                </div>
+
+                <div class="details large">
+                    <i class="fa-solid fa-id-card"></i>
+                    <span>Digital ID</span>
+                    <hr>
+                    <p>12345</p>
+                </div>
+
+                <div class="details large">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>LJ Mail ID</span>
+                    <hr>
+                    <p>22002171310002@ljku.edu.in</p>
+                </div>
+
+                <div class="details large">
+                    <i class="fa-solid fa-building"></i>
+                    <span>Department</span>
+                    <hr>
+                    <p>Computer Science Technology</p>
+                </div>
+
+                <div class="details large">
+                    <i class="fa-solid fa-list-ol"></i>
+                    <span>Semester</span>
+                    <hr>
+                    <p>3</p>
+                </div>
+            </div>
+
+        </div>
+
+        <br><br>
+        <div id="academic-performance">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <span>Academics</span>
+            <hr>
+        </div>
+        <br>
+
+        <h2 class="heading"><b>▶ Subject-wise Details</b></h2>
+        <div class="table-navigation">
+            <button class="arrow-btn" onclick="showPreviousTable()"><i
+                    class="fa-solid fa-circle-arrow-left"></i></button>
+            <div id="table1" class="table-container active">
+                <center>
+                    <h1 id="cat-number">Semester 1</h1>
+                </center>
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>SUBJECT</th>
+                            <th>CREDITS</th>
+                            <th>MARK (Out of 100)</th>
+                            <th>ATTENDANCE</th>
+                        </tr>
+                    </thead>
+                    <tbody id="catDetails">
+                        <tr>
+                            <td class=" sub-name">Java-1</td>
+                            <td class="sub-credit">6</td>
+                            <td class="sub-mark">70</td>
+                            <td class="sub-mark">90%</td>
+                        </tr>
+                        <tr>
+                            <td class=" sub-name">Physics</td>
+                            <td class="sub-credit">5</td>
+                            <td class="sub-mark">94</td>
+                            <td class="sub-mark">97%</td>
+                        </tr>
+                        <tr>
+                            <td class=" sub-name">Maths-1</td>
+                            <td class="sub-credit">5</td>
+                            <td class="sub-mark">60</td>
+                            <td class="sub-mark">75%</td>
+                        </tr>
+                        <tr>
+                            <td class=" sub-name">Data Structure</td>
+                            <td class="sub-credit">5</td>
+                            <td class="sub-mark">90</td>
+                            <td class="sub-mark">88%</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Table 2 -->
+            <div id="table2" class="table-container">
+                <center>
+                    <h1 id="cat-number">Semester 2</h1>
+                </center>
+
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>SUBJECT</th>
+                            <th>CREDITS</th>
+                            <th>MARK (Out of 100)</th>
+                            <th>ATTENDANCE</th>
+                        </tr>
+                    </thead>
+                    <tbody id="catDetails">
+                        <tr>
+                            <td class=" sub-name">Java-2</td>
+                            <td class="sub-credit">6</td>
+                            <td class="sub-mark">75</td>
+                            <td class="sub-mark">99%</td>
+                        </tr>
+                        <tr>
+                            <td class=" sub-name">FEE</td>
+                            <td class="sub-credit">5</td>
+                            <td class="sub-mark">97</td>
+                            <td class="sub-mark">97%</td>
+                        </tr>
+                        <tr>
+                            <td class=" sub-name">Maths-2</td>
+                            <td class="sub-credit">5</td>
+                            <td class="sub-mark">60</td>
+                            <td class="sub-mark">70%</td>
+                        </tr>
+                        <tr>
+                            <td class=" sub-name">DBMS</td>
+                            <td class="sub-credit">5</td>
+                            <td class="sub-mark">87</td>
+                            <td class="sub-mark">98%</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Table 3 -->
+            <div id="table3" class="table-container">
+                <center>
+                    <h1 id="cat-number">Semester 3</h1>
+                </center>
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>SUBJECT</th>
+                            <th>CREDITS</th>
+                            <th>MARK (Out of 100)</th>
+                            <th>ATTENDANCE</th>
+                        </tr>
+                    </thead>
+                    <tbody id="catDetails">
+                        <tr>
+                            <td class=" sub-name">FSD-1</td>
+                            <td class="sub-credit">6</td>
+                            <td class="sub-mark">85</td>
+                            <td class="sub-mark">99%</td>
+                        </tr>
+                        <tr>
+                            <td class=" sub-name">Python</td>
+                            <td class="sub-credit">5</td>
+                            <td class="sub-mark">94</td>
+                            <td class="sub-mark">97%</td>
+                        </tr>
+                        <tr>
+                            <td class=" sub-name">Digital Electronics</td>
+                            <td class="sub-credit">5</td>
+                            <td class="sub-mark">99</td>
+                            <td class="sub-mark">100%</td>
+                        </tr>
+                        <tr>
+                            <td class=" sub-name">Maths</td>
+                            <td class="sub-credit">5</td>
+                            <td class="sub-mark">79</td>
+                            <td class="sub-mark">78%</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <button class="arrow-btn" onclick="showNextTable()"><i class="fa-solid fa-circle-arrow-right"></i></button>
+        </div>
+        <br>
+        <hr><br>
+
+        <h2 id="performance"><b>▶ Performance</b></h2>
+        <div class="performance-container">
+            <div class="row">
+                <div class="col-4">
+                    <canvas id="pie_Chart" width="80" height="100"></canvas>
+                </div>
+                <div class="col-4">
+                    <canvas id="bar_Chart" width="80" height="100"></canvas>
+                </div>
+                <div class="col-4">
+                    <canvas id="line_Chart" width="80" height="100"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <br><br>
+        <hr><br>
+
+        <h2 id="sem-details"><b>▶ Study Materials</b></h2>
+        <div class="sem-container">
+            <div class="sem-details" onclick="openPDF('f.pdf')">
+                <div class="sem-card">
+                    <div class="sem-card-bg"></div>
+                    <p class="sem-card-title">FSD-1</p>
+                    <span class="sem-card-content">Chapter 1 to 10 </span>
+                </div>
+            </div>
+            <div class="sem-details" onclick="openPDF('p.pdf')">
+                <div class="sem-card" ng-repeat="sem in student.sem_gpa track by $index">
+                    <div class="sem-card-bg"></div>
+                    <p class="sem-card-title">Python 1</p>
+                    <span class="sem-card-content">Chapter 1 to 10</span>
+                </div>
+            </div>
+            <div class="sem-details" onclick="openPDF('d.pdf')">
+                <div class="sem-card" ng-repeat="sem in student.sem_gpa track by $index">
+                    <div class="sem-card-bg"></div>
+                    <p class="sem-card-title">Digital Electronics</p>
+                    <span class="sem-card-content">Chapter 1 to 10 </span>
+                </div>
+            </div>
+            <div class="sem-details" onclick="openPDF('m.pdf')">
+                <div class="sem-card" ng-repeat="sem in student.sem_gpa track by $index">
+                    <div class="sem-card-bg"></div>
+                    <p class="sem-card-title">Maths</p>
+                    <span class="sem-card-content">Chapter 1 to 10</span>
+                </div>
+            </div>
+        </div>
+
+        <h2 id="sem-details"><i class="nav-link fa-solid fa-solid fa-clipboard"></i><b> Notice Board</b></h2>
+        <hr>
+
+        <div class="notice-board" id="notice-board">
+            <div class="notice">
+                <pre> 🛑 Important Instructions for Sport Event 2024
+    Registration Starts from 12th January.
+                </pre>
+            </div>
+            <br>
+            <div class="notice">
+                <pre> 🛑 Important Instructions for CI Exam
+    The exam timing will be from 4:00 pm to 5:30 pm.
+    Reporting time to reach your respective lab will be 3:50 pm,
+    if you reach your lab after 3:50 pm. -2
+    marks will be considered.</pre>
+            </div>
+            <br>
+            <div class="notice">
+                <pre> 🛑We are going to teach you Tailwind Framework as a part Of fullstack development
+   and we will ask a small task of 10 marks in FSD-1 IPE  from this.
+   So be in respective lab, as per your batch mentioned in schedule.
+                </pre>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div>
+
+    </div>
+
+
+    <div class="animation-area">
+        <ul class="box-area">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+    <script src="toast.js"></script>
+    <script src="dashboard.js"></script>
+    <script src="navbar.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        var currentTableIndex = 0; // Track the index of the currently displayed table
+
+        // Function to show the selected table and hide others
+        function showTable(index) {
+            // Hide all tables
+            var tables = document.querySelectorAll('.table-container');
+            tables.forEach(function (table) {
+                table.classList.remove('active');
+            });
+
+            // Show the selected table
+            tables[index].classList.add('active');
+            currentTableIndex = index;
+        }
+
+        // Function to show the previous table
+        function showPreviousTable() {
+            currentTableIndex = (currentTableIndex - 1 + tables.length) % tables.length;
+            showTable(currentTableIndex);
+        }
+
+        // Function to show the next table
+        function showNextTable() {
+            currentTableIndex = (currentTableIndex + 1) % tables.length;
+            showTable(currentTableIndex);
+        }
+
+        // Show the initial table
+        var tables = document.querySelectorAll('.table-container');
+        showTable(currentTableIndex);
+        //-------------------------------------------------------------------------
+        // Get the context of each canvas element
+        var ctx1 = document.getElementById('pie_Chart').getContext('2d');
+        // Define data for each pie chart
+        var data1 = {
+            labels: ['FSD-1', 'Python', 'Digital Electronics', 'Maths'],
+            datasets: [{
+                data: [58, 70, 86, 61],
+                backgroundColor: ['Crimson', 'RoyalBlue', 'LawnGreen', 'GoldenRod']
+            }]
+        };
+        // Create each pie chart
+        var subject1Chart = new Chart(ctx1, {
+            type: 'pie',
+            data: data1,
+        });
+        //--------------------------------------------------------------------------
+        // Get the context of each canvas element
+        var ctx2 = document.getElementById('bar_Chart').getContext('2d');
+
+        // Define data for each bar chart
+        var data1 = {
+            labels: ['FSD-1', 'Python', 'Digital Electronics', 'Maths'],
+            datasets: [{
+                label: 'Bar Chart',
+                data: [58, 70, 86, 61],
+                backgroundColor: ['RoyalBlue', 'DeepSkyBlue', 'RoyalBlue', 'DeepSkyBlue']
+            }]
+        };
+
+        // Get the canvas element
+        var lineChartCanvas = document.getElementById("line_Chart").getContext('2d');
+
+        // Define data for the line chart
+        var lineChartData = {
+            labels: ['FSD-1', 'Python', 'Digital Electronics', 'Maths'],
+            datasets: [{
+                label: 'Line Chart',
+                data: [58, 70, 86, 61],
+                borderColor: 'blue',
+                backgroundColor: 'transparent',
+                borderWidth: 2
+            }]
+        };
+
+        // Create the line chart
+        var lineChart = new Chart(lineChartCanvas, {
+            type: 'line',
+            data: lineChartData,
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+        // Create each bar chart
+        var bar_Chart = new Chart(ctx2, {
+            type: 'bar',
+            data: data1,
+        });
+
+
+        function openPDF(path) {
+            window.open(path, '_blank');
+        }
+
+
+    </script>
+</body>
+
+</html>
