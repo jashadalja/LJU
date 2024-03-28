@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LJ University</title>
+    <link rel="icon" type="image/x-icon" href="../images/ljlogo1.png">
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!--  css file link -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<!---------------------------------------  body section starts  ----------------------------------------->
+
+<body>
+    <!-----------------------header section starts ----------------------->
+    <header class="header">
+        <img src="images/ljlogo2.png" style="height:5vh;" alt="ljlogo2">
+        <nav class="navbar">
+            <a href="#home" class="hover-underline">home</a>
+            <a href="#about" class="hover-underline">about</a>
+            <a href="#courses" class="hover-underline">courses</a>
+            <a href="#review" class="hover-underline">review</a>
+            <a href="#contact" class="hover-underline">contact</a>
+        </nav>
+        <div class="icons">
+            <div id="login-btn" class="fas fa-user"></div>
+            <div id="menu-btn" class="fas fa-bars"></div>
+        </div>
+        <!-------------- login form -------------->
+        <form class="login-form">
+            <h3>student login</h3>
+            <input type="email" placeholder="enter your email" class="box">
+            <input type="password" placeholder="enter your password" class="box">
+            <br>
+            <br>
+            <div class="forgotpass">
+                <a id="option" href="#">forgot password?</a>
+                <a id="option" href="facultylogin/facultylogin.html">login as Faculty!</a>
+            </div>
+            <br>
+            <a href="StudentDashboard/dashboard.html" class="btn">
+                <span class="text text-1">login now</span>
+                <span class="text text-2" aria-hidden="true">login now</span>
+            </a>
+        </form>
+    </header>
+    <!----------------------- header section ends ---------------------->
+
+    <!----------------------- home section starts ---------------------->
+    <section class="home" id="home">
+        <div class="content">
+            <h3>the best career you will find here</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam animi fuga unde, voluptates,
+                nisi qui hics.</p>
+            <a href="#" class="btn">
+                <span class="text text-1">learn more</span>
+                <span class="text text-2" aria-hidden="true">learn more</span>
+            </a>
+        </div>
+    </section>
+    <!----------------------- home section ends ----------------------->
+
+    <!----------------------- about section starts -------------------->
+    <section class="about" id="about">
+        <h1 class="heading">about us</h1>
+        <div class="container">
+            <div class="about-video">
+                <iframe width="100%" height="380" src="https://www.youtube.com/embed/mCBxOD_CLQk?&autoplay=1&mute=1"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+            <div class="about-content">
+                <h3>37 years of experience</h3>
+                <p>LJ University, Ahmedabad was established in the year 1980, is managed by Lok Jagruti Kendra (LJK), a
+                    Charitable Trust and a Registered Society. It offers undergraduate, postgraduate and research level
+                    programs in various disciplines like Engineering, Management, Humanities, Science, Pharmacy,
+                    Commerce, Applied Sciences, Architecture, Computer Application, Fashion Design etc.</p>
+                <p id="extra-content" style="display: none;">The university has a dedicated Interaction & Placement Cell
+                    which provides
+                    100% placement assistance to the students. Some of the top recruiters are Ace Infoway, Acty System,
+                    Cognizant, Infosys, Amdocs, Aristu, RBtech, IBM, Indiamart, Jekson Vision, Mindeft, Orient, Piramal,
+                    TCS, Skyzen, Reliance, Narola etc.</p>
+                <a href="#" id="read-more">
+                    <span id="#text-1">read more</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!----------------------- about section ends ----------------------->
+
+    <!----------------------- courses section start -------------------->
+    <section class="subjects" id="courses">
+        <h1 class="heading">our popular courses</h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="images/subject-1.png" alt="">
+                <h3>Computer Engineering</h3>
+                <p>fun & challenging</p>
+            </div>
+            <div class="box">
+                <img src="images/subject-2.png" alt="">
+                <h3>bachelor of commerce</h3>
+                <p>fun & challenging</p>
+            </div>
+            <div class="box">
+                <img src="images/subject-3.png" alt="">
+                <h3>graphic designing</h3>
+                <p>fun & challenging</p>
+            </div>
+            <div class="box">
+                <img src="images/subject-4.png" alt="">
+                <h3>AI and Machine Learning</h3>
+                <p>fun & challenging</p>
+            </div>
+        </div>
+    </section>
+    <!----------------------- courses section ends ----------------------->
+
+    <!----------------------- student review section starts --------------->
+    <section class="review" id="review">
+        <h1 class="heading">our students review</h1>
+        <div class="swiper review-slider">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide slide">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium laudantium distinctio
+                        dolore molestias facilis velit pariatur maiores debitis inventore.</p>
+                    <div class="wrapper">
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                    </div>
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="images/sampleprofile.png" alt="">
+                        <div class="user-info">
+                            <h3>Jash Adalja</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium laudantium distinctio
+                        dolore molestias facilis velit pariatur maiores debitis inventore.</p>
+                    <div class="wrapper">
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                    </div>
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="images/sampleprofile.png" alt="">
+                        <div class="user-info">
+                            <h3>Jash Adalja</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium laudantium distinctio
+                        dolore molestias facilis velit pariatur maiores debitis inventore.</p>
+                    <div class="wrapper">
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                    </div>
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="images/sampleprofile.png" alt="">
+                        <div class="user-info">
+                            <h3>Jash Adalja</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium laudantium distinctio
+                        dolore molestias facilis velit pariatur maiores debitis inventore.</p>
+                    <div class="wrapper">
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                    </div>
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="images/sampleprofile.png" alt="">
+                        <div class="user-info">
+                            <h3>Jash Adalja</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium laudantium distinctio
+                        dolore molestias facilis velit pariatur maiores debitis inventore.</p>
+                    <div class="wrapper">
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                    </div>
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="images/sampleprofile.png" alt="">
+                        <div class="user-info">
+                            <h3>Jash Adalja</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide slide">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium laudantium distinctio
+                        dolore molestias facilis velit pariatur maiores debitis inventore.</p>
+                    <div class="wrapper">
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                        <div class="separator"></div>
+                    </div>
+                    <i class="fas fa-quote-right"></i>
+                    <div class="user">
+                        <img src="images/sampleprofile.png" alt="">
+                        <div class="user-info">
+                            <h3>Jash Adalja</h3>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!----------------------- student review section ends ----------------------->
+
+    <!----------------------- contactus section starts -------------------------->
+    <section class="contact" id="contact">
+        <h1 class="heading">contact us</h1>
+        <div class="row">
+            <div class="image">
+                <img src="images/contact.png" alt="">
+            </div>
+            <form>
+                <h3>send us a message</h3>
+                <input type="text" placeholder="name" class="box">
+                <input type="email" placeholder="email" class="box">
+                <input type="number" placeholder="phone number" class="box">
+                <textarea placeholder="message" class="box" cols="30" rows="10"></textarea>
+                <a href="#" class="btn">
+                    <span class="text text-1">send message</span>
+                    <span class="text text-2" aria-hidden="true">send message</span>
+                </a>
+            </form>
+        </div>
+    </section>
+    <!----------------------- contactus section ends --------------------------->
+
+    <!----------------------- Team member section starts ----------------------->
+    <section class="team" id="team">
+        <h1 class="heading">Team Members</h1>
+        <div class="box-container">
+            <div class="box">
+                <div class="image">
+                    <img src="images/sampleprofile.png" alt="my image">
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>Jash Adalja</h3>
+                    <span>Member 1</span>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/sampleprofile.png" alt=" my image">
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>Archan Patel</h3>
+                    <span>Member 2</span>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/sampleprofile.png" alt="my image">
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>Jay Pandya</h3>
+                    <span>Member 3</span>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="images/sampleprofile.png" alt="my image">
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>Devna Jani</h3>
+                    <span>Member 4</span>
+                </div>
+            </div>
+            <div class="box">
+                <div class="image">
+                    <img src="images/sampleprofile.png" alt="my image">
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>Kavya Trivedi</h3>
+                    <span>Member 5</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!----------------------- Team member section ends ----------------->
+
+    <!----------------------- footer section stars ---------------------->
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>find us here</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum beatae.</p>
+                <div class="share">
+                    <a href="#" class="fab fa-facebook-f"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                    <a href="#" class="fab fa-linkedin"></a>
+                </div>
+            </div>
+            <div class="box">
+                <h3>contact us</h3>
+                <p>+91 9106381073</p>
+                <a href="#" class="link">jashadalja12@gmail.com</a>
+            </div>
+            <div class="box">
+                <h3>Adress</h3>
+                <p>Lorem, ipsum dolor. ipsum dolor sit amet consectetur.</p>
+            </div>
+        </div>
+        <div class="credit">created by <span>Jash Adalja </span>| all rights are reserved!</div>
+    </section>
+    <!-------footer section ends ---------->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-------- custom js link ------------->
+    <script src="js/script.js"></script>
+</body>
+<!---------------------------------------  body section ends  --------------------------------------------->
+
+</html>
