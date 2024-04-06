@@ -17,7 +17,7 @@
 
     .container {
       max-width: 1000px;
-      height: 1650px;
+      height: 1690px;
       margin: 50px auto;
       padding: 20px;
       border: 1px solid #ccc;
@@ -149,7 +149,7 @@
         </tr>
         <tr>
           <td>Student 2</td>
-          <td id="rollNumber_2">102</td>
+          <td id="rollNumber_2">101</td>
           <td id="batch_2">C4</td>
           <td id="branch_2">EEE</td>
           <td>
@@ -575,9 +575,14 @@
       </tbody>
     </table>
     <button class="button" onclick="showAttendance()">Submit Attendance</button>
-    <button class="button downloadButton" style="display:none;" onclick="downloadAbsentStudents()">Download
-      Exel</button>
-    <button class="button convertToImage" style="display:none;" onclick="tableToImage()">Download Image</button>
+    <button class="button downloadButton" style="display:none;" onclick="downloadPresentStudents()">Download Present
+      Student Excel</button>
+    <button class="button downloadButton" style="display:none;" onclick="downloadAbsentStudents()">Download Absent
+      Student Excel</button>
+    <button class="button convertToImage" style="display:none;" onclick="downloadPresentImage()">Download Present
+      Image</button>
+    <button class="button convertToImage" style="display:none;" onclick="downloadAbsentImage()">Download Absent
+      Image</button>
     <button class="button clearButton" onclick="clearForm()">Clear</button>
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -602,8 +607,11 @@
       existingTables.forEach(table => {
         table.remove();
       });
+
+      const presentStudents = [];
       const absentStudents = [];
-      const dateString = getTodayDate()
+      const dateString = getTodayDate();
+
       // Loop through each table row
       const tableRows = document.querySelectorAll('#attendanceTable tbody tr');
       tableRows.forEach(row => {
@@ -612,28 +620,68 @@
         const batch = row.querySelector('td:nth-child(3)').textContent;
         const branch = row.querySelector('td:nth-child(4)').textContent;
         const attendance = row.querySelector('input[type="radio"]:checked');
+
+        // Check if attendance is present or absent
         if (attendance && attendance.value === "Absent") {
           absentStudents.push({ studentName, rollNumber, batch, branch });
+        } else {
+          presentStudents.push({ studentName, rollNumber, batch, branch });
         }
       });
-      if (absentStudents.length > 0) {
-        const table = document.createElement('table');
-        table.className = 'attendanceResult';
-        const caption = document.createElement('caption');
-        caption.textContent = 'Absent Students ' + dateString;
-        caption.style.fontSize = '20px'
-        caption.style.fontWeight = 'bold'
-        table.appendChild(caption);
-        const thead = document.createElement('thead');
-        const tbody = document.createElement('tbody');
-        const trHead = document.createElement('tr');
+
+      if (presentStudents.length > 0) {
+        // Create table for present students
+        const presentTable = document.createElement('table');
+        presentTable.className = 'attendanceResult';
+        const presentCaption = document.createElement('caption');
+        presentCaption.textContent = 'Present Students ' + dateString;
+        presentCaption.style.fontSize = '20px';
+        presentCaption.style.fontWeight = 'bold';
+        presentTable.appendChild(presentCaption);
+        const presentThead = document.createElement('thead');
+        const presentTbody = document.createElement('tbody');
+        const presentTrHead = document.createElement('tr');
         ['Student Name', 'Roll Number', 'Batch', 'Branch'].forEach(headerText => {
           const th = document.createElement('th');
           th.textContent = headerText;
-          trHead.appendChild(th);
+          presentTrHead.appendChild(th);
         });
-        thead.appendChild(trHead);
-        table.appendChild(thead);
+        presentThead.appendChild(presentTrHead);
+        presentTable.appendChild(presentThead);
+        presentStudents.forEach(student => {
+          const tr = document.createElement('tr');
+          ['studentName', 'rollNumber', 'batch', 'branch'].forEach(key => {
+            const td = document.createElement('td');
+            td.textContent = student[key];
+            tr.appendChild(td);
+          });
+          presentTbody.appendChild(tr);
+        });
+        presentTable.appendChild(presentTbody);
+        document.body.appendChild(presentTable);
+      } else {
+        alert("All students are absent!");
+      }
+
+      if (absentStudents.length > 0) {
+        // Create table for absent students
+        const absentTable = document.createElement('table');
+        absentTable.className = 'attendanceResult';
+        const absentCaption = document.createElement('caption');
+        absentCaption.textContent = 'Absent Students ' + dateString;
+        absentCaption.style.fontSize = '20px';
+        absentCaption.style.fontWeight = 'bold';
+        absentTable.appendChild(absentCaption);
+        const absentThead = document.createElement('thead');
+        const absentTbody = document.createElement('tbody');
+        const absentTrHead = document.createElement('tr');
+        ['Student Name', 'Roll Number', 'Batch', 'Branch'].forEach(headerText => {
+          const th = document.createElement('th');
+          th.textContent = headerText;
+          absentTrHead.appendChild(th);
+        });
+        absentThead.appendChild(absentTrHead);
+        absentTable.appendChild(absentThead);
         absentStudents.forEach(student => {
           const tr = document.createElement('tr');
           ['studentName', 'rollNumber', 'batch', 'branch'].forEach(key => {
@@ -641,49 +689,161 @@
             td.textContent = student[key];
             tr.appendChild(td);
           });
-          tbody.appendChild(tr);
+          absentTbody.appendChild(tr);
         });
-        table.appendChild(tbody);
-        document.body.appendChild(table);
-        // Display additional buttons
-        document.querySelector('.downloadButton').style.display = 'inline-block';
-        document.querySelector('.convertToImage').style.display = 'inline-block';
+        absentTable.appendChild(absentTbody);
+        document.body.appendChild(absentTable);
       } else {
         alert("All students are present!");
       }
+
+      // Display download buttons
+      document.querySelectorAll('.downloadButton').forEach(button => {
+        button.style.display = 'inline-block';
+      });
+      document.querySelectorAll('.convertToImage').forEach(button => {
+        button.style.display = 'inline-block';
+      });
     }
+
     function downloadAbsentStudents() {
-      const table = document.querySelector('table.attendanceResult');
-      const ws = XLSX.utils.table_to_sheet(table);
-      const dateString = getTodayDate()
+      const tableRows = document.querySelectorAll('#attendanceTable tbody tr');
+      const absentStudents = [];
+
+      // Loop through each table row and check for absent students
+      tableRows.forEach(row => {
+        const attendance = row.querySelector('input[type="radio"]:checked');
+        if (attendance && attendance.value === 'Absent') {
+          const studentName = row.querySelector('td:nth-child(1)').textContent;
+          const rollNumber = row.querySelector('td:nth-child(2)').textContent;
+          const batch = row.querySelector('td:nth-child(3)').textContent;
+          const branch = row.querySelector('td:nth-child(4)').textContent;
+          absentStudents.push({ studentName, rollNumber, batch, branch });
+        }
+      });
+
+      if (absentStudents.length > 0) {
+        // Create a worksheet
+        const ws = XLSX.utils.json_to_sheet(absentStudents);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'Absent Students');
+
+        // Generate the file name with today's date
+        const dateString = getTodayDate();
+        const fileName = `Absent_Students_${dateString}.xlsx`;
+
+        // Save the workbook as an Excel file
+        XLSX.writeFile(wb, fileName);
+      } else {
+        alert("No absent students to download.");
+      }
+    }
+    function downloadPresentStudents() {
+      const presentTable = document.querySelector('table.attendanceResult');
+      const ws = XLSX.utils.table_to_sheet(presentTable);
+      const dateString = getTodayDate();
       // Create a new workbook and add the worksheet
       const wb = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(wb, ws, 'Daily Absent No_');
+      XLSX.utils.book_append_sheet(wb, ws, 'Daily Present No_');
       // Generate the file name
-      const fileName = `Daily Absent No_${dateString}.xlsx`;
+      const fileName = `Daily Present No_${dateString}.xlsx`;
       // Save the workbook as an Excel file
       XLSX.writeFile(wb, fileName);
     }
-    function tableToImage() {
-      const table = document.querySelector('table.attendanceResult');
-      html2canvas(table).then(function (canvas) {
-        // Convert canvas to image
-        const imgData = canvas.toDataURL('image/png');
-        // Create a new anchor element
-        const link = document.createElement('a');
-        link.href = imgData;
-        // Get today's date
-        const dateString = getTodayDate();
-        // Set the file name for download with today's date
-        link.download = `Daily Absent No_${dateString}.png`;
-        // Append the anchor element to the document body
-        document.body.appendChild(link);
-        // Trigger a click event on the anchor element to initiate download
-        link.click();
-        // Remove the anchor element from the document body
-        document.body.removeChild(link);
-      });
+    function downloadPresentImage() {
+      const presentTable = document.querySelector('table.attendanceResult');
+      if (presentTable) {
+        html2canvas(presentTable).then(function (canvas) {
+          const imgData = canvas.toDataURL('image/png');
+          const link = document.createElement('a');
+          const dateString = getTodayDate();
+          const fileName = `Present_Students_${dateString}.png`;
+          link.href = imgData;
+          link.download = fileName;
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        });
+      } else {
+        alert("No present students to download.");
+      }
     }
+
+    function downloadAbsentImage() {
+      const tableRows = document.querySelectorAll('#attendanceTable tbody tr');
+      const absentStudents = [];
+
+      // Loop through each table row and check for absent students
+      tableRows.forEach(row => {
+        const attendance = row.querySelector('input[type="radio"]:checked');
+        if (attendance && attendance.value === 'Absent') {
+          const studentName = row.querySelector('td:nth-child(1)').textContent;
+          const rollNumber = row.querySelector('td:nth-child(2)').textContent;
+          const batch = row.querySelector('td:nth-child(3)').textContent;
+          const branch = row.querySelector('td:nth-child(4)').textContent;
+          absentStudents.push({ studentName, rollNumber, batch, branch });
+        }
+      });
+
+      if (absentStudents.length > 0) {
+        // Create a table for absent students
+        const absentTable = document.createElement('table');
+        absentTable.className = 'attendanceResult';
+
+        // Create and style the caption
+        const dateString = getTodayDate();
+        const absentCaption = document.createElement('caption');
+        absentCaption.textContent = `Absent Students  ${dateString}`;
+        absentCaption.style.fontWeight = 'bold';
+        absentCaption.style.color = 'black';
+        absentTable.appendChild(absentCaption);
+
+        const absentThead = document.createElement('thead');
+        const absentTbody = document.createElement('tbody');
+        const absentTrHead = document.createElement('tr');
+        ['Student Name', 'Roll Number', 'Batch', 'Branch'].forEach(headerText => {
+          const th = document.createElement('th');
+          th.textContent = headerText;
+          absentTrHead.appendChild(th);
+        });
+        absentThead.appendChild(absentTrHead);
+        absentTable.appendChild(absentThead);
+        absentStudents.forEach(student => {
+          const tr = document.createElement('tr');
+          ['studentName', 'rollNumber', 'batch', 'branch'].forEach(key => {
+            const td = document.createElement('td');
+            td.textContent = student[key];
+            tr.appendChild(td);
+          });
+          absentTbody.appendChild(tr);
+        });
+        absentTable.appendChild(absentTbody);
+
+        // Append the table to the body to display it
+        document.body.appendChild(absentTable);
+
+        // Convert the table to image after a short delay to ensure it's rendered
+        setTimeout(function () {
+          html2canvas(absentTable).then(function (canvas) {
+            const imgData = canvas.toDataURL('image/png');
+            const link = document.createElement('a');
+            const fileName = `Absent_Students_${dateString}.png`;
+            link.href = imgData;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            // Remove the table from the body after download
+            document.body.removeChild(absentTable);
+          });
+        }, 1000); // Adjust the delay as needed
+      } else {
+        alert("No absent students to download.");
+      }
+    }
+
+
   </script>
 </body>
 
